@@ -83,7 +83,7 @@
             <ul>
                 <li><a href="#home">Home</a></li>
                 <li><a href="#events">Events</a></li>
-                <li><a href="#register">Register</a></li>
+                <li><a href="#register">Contact us</a></li>
             </ul>
         </nav>
     </header>
@@ -92,25 +92,36 @@
         <section id="home">
             <h1>Welcome to Tech Euphoria 2K25</h1>
             <p>Join the biggest tech and cultural fest of the year!</p>
-            <a href="#events" class="cta">Explore Events</a>
+        
+            <div class="countdown-container" >
+                <div id="countdown">
+                    <span id="days"></span> Days
+                    <span id="hours">00</span> Hours
+                    <span id="minutes">00</span> Min
+                    <span id="seconds">00</span> Sec
+                </div>
+            </div>
         </section>
+        
+       
+        
 
         <section id="events">
             <h2>Events</h2>
             <div class="event">
                 <img src="pycraft.jpg" alt="Py-Craft">
                 <h3>Py-Craft (Hack with Python)</h3>
-                <button onclick="showPopup('pycraft-details')">Explore</button>
+                <button class="register-btn" onclick="showPopup('pycraft-details')">Explore</button>
             </div>
             <div class="event">
                 <img src="innoex.jpg" alt="InnoEX">
                 <h3>InnoEX (Project Expo)</h3>
-                <button onclick="showPopup('innoex-details')">Explore</button>
+                <button  class="register-btn" onclick="showPopup('innoex-details')">Explore</button>
             </div>
             <div class="event">
                 <img src="circuit.jpg" alt="Circuit Innovation">
                 <h3>Circuiton (Circuit Innovation & Building)</h3>
-                <button onclick="showPopup('circuiton-details')">Explore</button>
+                <button  class="register-btn" onclick="showPopup('circuiton-details')">Explore</button>
             </div>
         </section>
         
@@ -121,19 +132,19 @@
                 <h2>Py-Craft (Hack with Python)</h2>
                 <img src="pycraft.jpg" alt="Py-Craft">
                 <p>Details about Py-Craft event...</p>
-                <button>Register Now</button>
+                <button  class="register-btn">Register Now</button>
             </div>
             <div id="innoex-details" class="event-details" style="display:none;">
                 <h2>InnoEX (Project Expo)</h2>
                 <img src="innoex.jpg" alt="InnoEX">
                 <p>Details about InnoEX event...</p>
-                <button>Register Now</button>
+                <button  class="register-btn">Register Now</button>
             </div>
             <div id="circuiton-details" class="event-details" style="display:none;">
                 <h2>Circuiton (Circuit Innovation & Building)</h2>
                 <img src="circuit.jpg" alt="Circuit Innovation">
                 <p>Details about Circuiton event...</p>
-                <button>Register Now</button>
+                <button class="register-btn">Register Now</button>
             </div>
         </div>
     </main>
@@ -142,5 +153,36 @@
         <p>&copy; 2025 Tech Euphoria. All rights reserved.</p>
         <p class="developer">Developed by <strong>Aswanth Allu</strong></p>
     </footer>
+     <script>
+        function startCountdown(targetDate) {
+            function updateCountdown() {
+                let now = new Date().getTime();
+                let distance = targetDate - now;
+
+                if (distance < 0) {
+                    document.getElementById("countdown").innerHTML = "The Event Has Started!";
+                    return;
+                }
+
+                let days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                let seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                document.getElementById("days").textContent = days.toString().padStart(2, "0");
+                document.getElementById("hours").textContent = hours.toString().padStart(2, "0");
+                document.getElementById("minutes").textContent = minutes.toString().padStart(2, "0");
+                document.getElementById("seconds").textContent = seconds.toString().padStart(2, "0");
+
+                setTimeout(updateCountdown, 1000);
+            }
+            updateCountdown();
+        }
+
+        window.onload = function() {
+            let eventDate = new Date("March 20, 2025 00:00:00").getTime(); 
+            startCountdown(eventDate);
+        };
+    </script>
 </body>
 </html>

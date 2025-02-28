@@ -10,6 +10,10 @@ body {
     overflow-x: hidden;
     position: relative;
 }
+html {
+    scroll-behavior: smooth;
+}
+
 #home {
     position: fixed; /* Fixes the home section in place */
     top: 0;
@@ -97,10 +101,11 @@ nav ul li a:hover {
 
 /* Home Section */
 #home {
-    padding: 120px 20px;
+    padding: 10px 20px;
     position: relative;
     font-family: 'Orbitron', sans-serif;
     overflow: hidden;
+    display:flex;
 }
 
 /* Floating Glowing Dots */
@@ -110,13 +115,20 @@ nav ul li a:hover {
     width: 100%;
     height: 100%;
     background: radial-gradient(circle, rgba(255, 69, 0, 0.2) 10%, transparent 80%);
-    animation: backgroundPulse 5s infinite alternate;
+    animation: backgroundPulse 3s infinite alternate;
 }
 
 @keyframes backgroundPulse {
-    0% { background: radial-gradient(circle, rgba(255, 69, 0, 0.3) 15%, transparent 85%); }
-    100% { background: radial-gradient(circle, rgba(255, 165, 0, 0.4) 20%, transparent 80%); }
+    0% { background: radial-gradient(circle, rgba(255, 0, 0, 0.3) 10%, transparent 80%); } /* Red */
+    16% { background: radial-gradient(circle, rgba(255, 165, 0, 0.3) 10%, transparent 80%); } /* Orange */
+    33% { background: radial-gradient(circle, rgba(255, 255, 0, 0.3) 10%, transparent 80%); } /* Yellow */
+    50% { background: radial-gradient(circle, rgba(0, 255, 0, 0.3) 10%, transparent 80%); } /* Green */
+    66% { background: radial-gradient(circle, rgba(0, 0, 255, 0.3) 10%, transparent 80%); } /* Blue */
+    83% { background: radial-gradient(circle, rgba(75, 0, 130, 0.3) 10%, transparent 80%); } /* Indigo */
+    100% { background: radial-gradient(circle, rgba(148, 0, 211, 0.3) 10%, transparent 80%); } /* Violet */
 }
+
+
 
 /* CTA Button */
 .cta {
@@ -147,6 +159,7 @@ nav ul li a:hover {
     font-family: 'Oswald', sans-serif;
     position: relative;
     overflow: hidden;
+    height:180px;
 }
 
 .event:hover {
@@ -173,6 +186,7 @@ nav ul li a:hover {
 
 /* Registration Section */
 .register-btn {
+    border:0px;
     display: inline-block;
     background: linear-gradient(90deg, #ff4500, #ff8c00);
     color: white;
@@ -248,3 +262,32 @@ footer p {
     text-transform: uppercase;
     letter-spacing: 1.5px;
 }
+
+.countdown-container {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 1rem;
+    font-weight: bold;
+   background-color:transparent ;
+    color: white;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    animation: glow 1.5s infinite alternate;
+}
+
+#countdown span {
+    font-size: 2rem;
+    font-weight: bold;
+    margin: 0 10px;
+}
+
+@keyframes glow {
+    from {
+        box-shadow: 0px 0px 10px rgba(255, 0, 255, 0.7);
+    }
+    to {
+        box-shadow: 0px 0px 20px rgba(255, 85, 0, 0.9);
+    }
+}
+
