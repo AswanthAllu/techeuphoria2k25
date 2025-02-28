@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech Euphoria 2K25</title>
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        function showPopup(eventId) {
+            document.getElementById('popup').style.display = 'block';
+            document.getElementById('overlay').style.display = 'block';
+            document.getElementById(eventId).style.display = 'block';
+        }
+
+        function closePopup() {
+            document.getElementById('popup').style.display = 'none';
+            document.getElementById('overlay').style.display = 'none';
+            document.querySelectorAll('.event-details').forEach(event => {
+                event.style.display = 'none';
+            });
+        }
+    </script>
+    <style>
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 20px;
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            width: 50%;
+            border-radius: 10px;
+            animation: fadeIn 0.3s ease-in-out;
+            background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translate(-50%, -55%); }
+            to { opacity: 1; transform: translate(-50%, -50%); }
+        }
+        .popup .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+            font-size: 18px;
+            background: red;
+            color: white;
+            padding: 5px 10px;
+            border: none;
+            border-radius: 5px;
+        }
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 999;
+        }
+        .event button {
+            background-color: #ff9800;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+        .event button:hover {
+            background-color: #e68900;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#events">Events</a></li>
+                <li><a href="#register">Register</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main>
+        <section id="home">
+            <h1>Welcome to Tech Euphoria 2K25</h1>
+            <p>Join the biggest tech and cultural fest of the year!</p>
+            <a href="#events" class="cta">Explore Events</a>
+        </section>
+
+        <section id="events">
+            <h2>Events</h2>
+            <div class="event">
+                <img src="pycraft.jpg" alt="Py-Craft">
+                <h3>Py-Craft (Hack with Python)</h3>
+                <button onclick="showPopup('pycraft-details')">Explore</button>
+            </div>
+            <div class="event">
+                <img src="innoex.jpg" alt="InnoEX">
+                <h3>InnoEX (Project Expo)</h3>
+                <button onclick="showPopup('innoex-details')">Explore</button>
+            </div>
+            <div class="event">
+                <img src="circuit.jpg" alt="Circuit Innovation">
+                <h3>Circuiton (Circuit Innovation & Building)</h3>
+                <button onclick="showPopup('circuiton-details')">Explore</button>
+            </div>
+        </section>
+        
+        <div class="overlay" id="overlay" onclick="closePopup()"></div>
+        <div id="popup" class="popup">
+            <button class="close-btn" onclick="closePopup()">X</button>
+            <div id="pycraft-details" class="event-details" style="display:none;">
+                <h2>Py-Craft (Hack with Python)</h2>
+                <img src="pycraft.jpg" alt="Py-Craft">
+                <p>Details about Py-Craft event...</p>
+                <button>Register Now</button>
+            </div>
+            <div id="innoex-details" class="event-details" style="display:none;">
+                <h2>InnoEX (Project Expo)</h2>
+                <img src="innoex.jpg" alt="InnoEX">
+                <p>Details about InnoEX event...</p>
+                <button>Register Now</button>
+            </div>
+            <div id="circuiton-details" class="event-details" style="display:none;">
+                <h2>Circuiton (Circuit Innovation & Building)</h2>
+                <img src="circuit.jpg" alt="Circuit Innovation">
+                <p>Details about Circuiton event...</p>
+                <button>Register Now</button>
+            </div>
+        </div>
+    </main>
+    
+    <footer>
+        <p>&copy; 2025 Tech Euphoria. All rights reserved.</p>
+        <p class="developer">Developed by <strong>Aswanth Allu</strong></p>
+    </footer>
+</body>
+</html>
